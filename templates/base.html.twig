@@ -96,6 +96,7 @@
                                 <li class=""><a href="{{ path('site') }}"> sites web </a></li>
                                 {% if app.user %}
                                 <li class=""><a href="{{ path('panier') }}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                                    <li class=""><a href="">archive commande </a></li>
                                 {% endif %}
                                 {% if is_granted('ROLE_Admin') %}
                                     <li class=""><a href="{{ path('admin') }}">Dashbord</a></li>

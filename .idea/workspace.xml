@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e63a524-f63c-4196-86a2-74b6e7767d56" name="Default Changelist" comment="" />
+    <list default="true" id="0e63a524-f63c-4196-86a2-74b6e7767d56" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Site.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Utilisateur.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Utilisateur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/operateur/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/operateur/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/panier/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/panier/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +17,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -160,7 +170,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../inceptum-librairie symfony 3.4" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -200,6 +210,7 @@
       <updated>1623405592768</updated>
       <workItem from="1623405593881" duration="36305000" />
       <workItem from="1623678817129" duration="20536000" />
+      <workItem from="1623759743947" duration="2728000" />
     </task>
     <servers />
   </component>
@@ -211,5 +222,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1623680856047" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1623775349398">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1623775349398" />
   </component>
 </project>
