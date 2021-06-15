@@ -1,0 +1,17 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} ajouter un site {% endblock %}
+
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="container">
+            {{ form_start(form) }}
+            <img height="200"  src="{{ asset('assets/images/packages/' ~ sites.image) }}">
+            <div> {{ form_row(form.imageFile) }} </div>
+            <div>  {{ form_widget(form) }} </div>
+            <input type="submit" class="btn btn-primary" value="modifier">
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les Categories{% endblock %}
+
+{% block body %}
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="gallery-details">
+                <div class="gallary-header text-center">
+                    <h2>
+                        Les Categories
+                    </h2>
+                    <p>
+                        les categories des notre site web
+                    </p>
+                </div><!--/.gallery-header-->
+                <div class="gallery-box">
+                    <div class="gallery-content">
+                        <div class="filtr-container">
+                            <div class="row">
+                                {%  for c in categorie %}
+                                    <div class="col-md-12">
+                                        <div class="filtr-item">
+                                            <img src="{{ asset('assets/images/gallary/' ~ c.image)}}" alt="portfolio image">
+                                            <div class="item-title">
+                                                 <a  href="{{ path('categoriesite',{'id':c.id}) }}">
+                                                    {{ c.nom }}
+                                                </a>
+                                                <p>
+                                                <span style="color: red">
+                                                    Description : {{ c.description }}
+                                                </span>
+
+                                                </p>
+                                            </div><!-- /.item-title -->
+                                        </div><!-- /.filtr-item -->
+                                    </div><!-- /.col -->
+                                {% endfor %}
+                            </div><!-- /.row -->
+                        </div><!-- /.filtr-container-->
+                    </div><!-- /.gallery-content -->
+                </div><!--/.galley-box-->
+            </div><!--/.gallery-details-->
+        </div><!--/.container-->
+    </section>
+{% endblock %}

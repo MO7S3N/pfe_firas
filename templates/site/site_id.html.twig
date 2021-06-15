@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Site: {{ sites.nom }}{% endblock %}
+
+
+{% block body %}
+<section id="spo" class="special-offer" style="background: url({{ asset('../../assets/images/offer/banner.jpg')}})no-repeat center;">
+    <div class="container">
+        <div class="special-offer-content">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="single-special-offer">
+                        <div class="single-special-offer-txt">
+                            <h2>{{ sites.nom }}</h2>
+                            <div class="packages-review special-offer-review">
+                                <p>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </p>
+                            </div><!--/.packages-review-->
+                            <div class="packages-para special-offer-para">
+                                <p class="offer-para">
+                                  Description du site :  {{ sites.description }}
+                                </p>
+                            </div><!--/.packages-para-->
+                            {% if app.user %}
+                            <div class="offer-btn-group">
+                                <div class="about-btn">
+
+                                    <a style="width: 200px;" href="{{ path('ajoutpanier',{'id':sites.id})}}" class="about-view packages-btn offfer-btn">
+                                        <i class="fa fa-cart-plus"></i>ajouter panier
+                                    </a>
+                                </div><!--/.about-btn-->
+                            </div><!--/.offer-btn-group-->
+                            {% endif %}
+                        </div><!--/.single-special-offer-txt-->
+                    </div><!--/.single-special-offer-->
+                </div><!--/.col-->
+                <div class="col-sm-4">
+                    <div class="single-special-offer">
+                        <div class="single-special-offer-bg">
+                            <img src="{{ asset('assets/images/offer/offer-shape.png')}}" alt="offer-shape">
+                        </div><!--/.single-special-offer-bg-->
+                        <div class="single-special-shape-txt">
+                            <h3>offre special</h3>
+                            <h4><span>{{ sites.remise*100 }}%</span><br>remise</h4>
+                            <p><span>{{ sites.prix - sites.prix * sites.remise }}</span><br>prix initial : {{ sites.prix }} TND</p>
+                        </div><!--/.single-special-shape-txt-->
+                    </div><!--/.single-special-offer-->
+                </div><!--/.col-->
+            </div><!--/.row-->
+        </div><!--/.special-offer-content-->
+    </div><!--/.container-->
+
+</section>
+{% endblock %}

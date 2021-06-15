@@ -1,0 +1,75 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Les sites {% endblock %}
+
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Les Sites</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+
+                                        <a class="btn btn-success" href="{{ path('AjoutSite') }}">Ajouter</a>
+
+                                        <thead class="text-center">
+                                        <tr>
+                                            <th>nom</th>
+                                            <th>Description</th>
+                                            <th>prix</th>
+                                            <th>categorie</th>
+                                            <th>image</th>
+                                            <th>actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        {% for s in sites %}
+                                            <tr>
+                                               <td>{{ s.nom }}</td>
+                                                <td>{{ s.description }}</td>
+                                                <td>{{ s.prix }}</td>
+                                                <td>{{ s.categorie.nom }}</td>
+                                                <td><img width="200" class="img-responsive" src="{{ asset('assets/images/packages/'~ s.image) }}"></td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <a class="btn btn-primary"  href="{{path('modifSite',{'id': s.id})}}" >modifier</a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <form method="post"  action="{{ path('supSite',{'id': s.id})}}" onsubmit="return confirm('Voulez vous supprimer ?')">
+                                                                <input type="hidden" name="_method" value="SUP">
+                                                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ s.id)}}">
+                                                                <input type="submit" class="btn btn-danger w-100" value="supprimer">
+                                                            </form>
+                                                        </div>
+                                                        <div class="col">
+                                                            <a class="btn btn-warning" style="text-align: center" href="">pdf</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+        </div>
+    </section>
+{% endblock %}

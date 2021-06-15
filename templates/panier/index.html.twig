@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title  %} votre panier {% endblock %}
+
+{% block body %}
+
+    <section class="bg-light p-3">
+        <h1>Votre Panier</h1>
+    </section>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>image</th>
+                <th>nom du produit </th>
+                <th>prix</th>
+                <th>Qunantite</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+           {% for element in datapanier %}
+            <tr>
+                <td><img style="width:150px;" class="img-responsive" src="{{ asset("assets/images/packages/"~ element.sites.image)}}"></td>
+                <td>{{ element.sites.nom }}</td>
+                <td>{{ element.sites.prix }}</td>
+                <td>{{ element.quantite }}</td>
+                <td>{{ element.quantite * element.sites.prix }} TND </td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('ajoutpanier',{'id': element.sites.id}) }}">
+                        <i class="fa fa-cart-plus"></i>
+                    </a>
+                    <a class="btn btn-warning" href="{{ path('supprimerpanier_elemnt',{'id': element.sites.id}) }}">
+                        <i class="fa fa-cart-arrow-down"></i>
+                    </a>
+                    <a class="btn btn-danger" href="{{ path('supprimerpanier',{'id': element.sites.id}) }}">
+                        <i class="fa fa-cart-arrow-down"></i>
+                    </a>
+                </td>
+            </tr>
+           {% else%}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        votre panier est vide
+                    </td>
+                </tr>
+           {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">Total</td>
+                <td class="text-right">{{ total }} TND </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div class="checkout_btn_inner float-right">
+        <a class="btn btn-success" href="{{ path('site') }}">Continuer les courses</a>
+        <a class="btn btn-warning" href="">Valider commande</a>
+
+    </div>
+{% endblock body %}

@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}les Sites{% endblock %}
+{%  block stylesheet %}
+    <style>
+        #checkout-button
+        {
+            width: 300px;
+            margin-right: 50px;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <section id="pack" class="packages">
+        <div class="container">
+            <div class="gallary-header text-center">
+                <h2>
+                    Les Sites
+                </h2>
+                <p>
+                    Voici les sites , J espere que les sites  vous plaisent
+                </p>
+            </div><!--/.gallery-header-->
+            {#
+            {{ form_start(form) }}
+            <div class="row no-gutters align-items-center text-center">
+                <div class="col">
+                    {{ form_row(form.minAnnee) }}
+                </div>
+                <div class="col">
+                    {{ form_row(form.maxAnnee) }}
+                </div>
+                <div class="col-2">
+                    <input type="submit" value="rechercher" class="btn btn-primary">
+                </div>
+            </div>
+            {{ form_end(form) }}
+            <div class="navigation align-items-center text-center">
+                {{ knp_pagination_render(offres) }}
+            </div>
+            #}
+
+            <div class="packages-content">
+                <div class="row">
+                    {% for s in sites %}
+                        <div class="col-md-4 col-sm-4">
+                            <div class="single-package-item">
+                                <img width="150" height="150" src="{{asset('assets/images/packages/' ~ s.image)}}" alt="package-place">
+                                <div class="single-package-item-txt">
+                                    <h3>
+                                        <a style="color: #0F9E5E" href="{{ path('site_id',{'id':s.id}) }}"> {{ s.nom}} </a> <span class="pull-right">   {{ s.prix }} TND </span>
+                                    </h3>
+
+                                    <div class="packages-para">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-4">
+                                                <p>
+                                                    <span>
+                                                         Description :   {{s.description }}
+                                                    </span>
+                                                </p>
+                                                <p>
+                                                    <span>
+                                                        categorie : {{ s.categorie.nom }}
+                                                    </span>
+                                                </p>
+                                            </div>
+
+                                            {#
+                                            <div class="row no-gutters align-items-center text-center">
+                                                <div class="col">
+                                                    <a style="width:300px" class="btn btn-primary" href="{{path('map',{'id': offres.id})}}">Map : Location</a>
+                                                </div>
+                                                <label>  </label>
+                                            </div>
+                                            #}
+                                        </div>
+                                        <div class="about-btn">
+                                            <a href="{{ path('devis') }}" style="width: 200px;" class="about-view packages-btn">
+                                                demander un devis
+                                            </a>
+                                        </div><!--/.about-btn-->
+                                    </div><!--/.packages-para-->
+                                    {#
+                                    <button class="about-view packages-btn" id="checkout-button">Checkout</button>
+                                    #}
+                                </div><!--/.single-package-item-txt-->
+                            </div><!--/.single-package-item-->
+                        </div><!--/.col-->
+                    {% endfor %}
+                </div><!--/.row-->
+            </div><!--/.packages-content-->
+        </div><!--/.container-->
+    </section>
+    <script src="{{ asset('https://js.stripe.com/v3/')}}"></script>
+    <script>
+        // Create an instance of the Stripe object with your publishable API key
+        var stripe = Stripe('pk_test_51ITrmKDemurknTpxNogaH6qwkkX1HK7bxuSwQU2CGyorqtm0u4sXCrbYFAsbFLTRv1tZPANLJCzSiKCxL40xQXi90040tZxsuX');
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function() {
+            // Create a new Checkout Session using the server-side endpoint you
+            // created in step 3.
+            fetch('/offres/create-checkout-session', {
+                method: 'POST',
+            })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(session) {
+                    return stripe.redirectToCheckout({ sessionId: session.id });
+                })
+                .then(function(result) {
+                    // If `redirectToCheckout` fails due to a browser or network
+                    // error, you should display the localized error message to your
+                    // customer using `error.message`.
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function(error) {
+                    console.error('Error:', error);
+                });
+        });
+    </script>
+{% endblock %}

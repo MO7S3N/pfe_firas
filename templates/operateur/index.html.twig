@@ -1,0 +1,86 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Les clients {% endblock %}
+
+{% block body %}
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Les Sites</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead class="text-center">
+                                        <tr>
+                                            <th>image</th>
+                                            <th>username</th>
+                                            <th>firstname</th>
+                                            <th>lastname</th>
+                                            <th>email</th>
+                                            <th>adresse</th>
+                                            <th>numero de tel</th>
+                                            <th>roles</th>
+                                            <th>actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="text-center">
+                                        {% for s in user %}
+                                        {% for role in s.roles %}
+                                            {% if role =="ROLE_USER" %}
+                                            <tr>
+                                                <td><img style="width:100px;" src="{{ asset(s.image) }}"></td>
+                                                <td>{{ s.username }}</td>
+                                                <td>{{ s.firstname }}</td>
+                                                <td>{{ s.lastname }}</td>
+                                                <td>{{ s.email }}</td>
+                                                <td>{{ s.addresse }}</td>
+                                                <td>{{ s.telnum }}</td>
+                                                <td>
+                                                    {% for role in s.roles %}
+                                                        {% if role=="ROLE_USER" %}
+                                                            client
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </td>
+                                                <td>
+                                                    {#
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <a class="btn btn-primary"  href="{{path('modifSite',{'id': s.id})}}" >modifier</a>
+                                                        </div>
+                                                        <div class="col">
+                                                            <form method="post"  action="{{ path('supSite',{'id': s.id})}}" onsubmit="return confirm('Voulez vous supprimer ?')">
+                                                                <input type="hidden" name="_method" value="SUP">
+                                                                <input type="hidden" name="_token" value="{{ csrf_token('SUP' ~ s.id)}}">
+                                                                <input type="submit" class="btn btn-danger w-100" value="supprimer">
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    #}
+                                                </td>
+                                            </tr>
+                                            {% endif %}
+                                          {% endfor %}
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </section>
+        </div>
+    </section>
+{% endblock %}
